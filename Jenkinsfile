@@ -3,22 +3,16 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Check Python') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/SHAH8860/python_file_Upload.git'
+                bat 'python --version'
+                bat 'where python'
             }
         }
 
         stage('Install Dependencies') {
             steps {
                 bat 'python -m pip install fastapi uvicorn sqlalchemy pydantic[email] python-multipart'
-            }
-        }
-
-        stage('Check Python') {
-            steps {
-                bat 'python --version'
             }
         }
 
